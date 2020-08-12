@@ -3,13 +3,17 @@ import './PlaceList.css'
 import Card from '../../shared/components/UIElement/Card'
 import Button from '../../shared/components/FormElement/Button'
 import Modal from '../../shared/components/UIElement/Modal'
+import Map from '../../shared/components/UIElement/Map'
 
-const PlaceItems = (props) =>{
+
+const PlaceItems = props =>{
     
     const [showMap, setShowMap] = useState(false);
     const [showConfirmModal, setShowConfirmModal] = useState(false);
   
-    const openMapHandler = () => setShowMap(true);
+    const openMapHandler = () => {
+        setShowMap(true);
+    }
   
     const closeMapHandler = () => setShowMap(false);
 
@@ -24,7 +28,7 @@ const PlaceItems = (props) =>{
         footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
       >
         <div className="map-container">
-         
+            <Map center={props.coordinates} zoom={16} />
         </div>
       </Modal>
         <li className="place-item">
